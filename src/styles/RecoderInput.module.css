@@ -1,220 +1,249 @@
 /* ======== ベース ======== */
 .container {
-    width: 100%;
-    max-width: 500px; /* PCでの最大幅 */
-    margin: 40px auto;
-    padding: 1.5rem 2rem; /* 横パディング多めで左右に余白 */
-    background: #f0f7fa;
-    border: 1px solid #b0bec5;
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-    color: #333;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    box-sizing: border-box; /* はみ出し防止 */
+  width: 100%;
+  max-width: 500px; /* PCでの最大幅 */
+  margin: 40px auto;
+  padding: 1.5rem 2rem; /* 横パディング多めで左右に余白 */
+  background: #f0f7fa;
+  border: 1px solid #b0bec5;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  color: #333;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-sizing: border-box; /* はみ出し防止 */
+}
+
+/* ======== タイトル ======== */
+.h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #1565c0;
+}
+
+/* ======== 入力グループ ======== */
+.inputGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+  flex: 1 1 100%;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.inputGroup input {
+  flex: 1 1 auto;
+  padding: 0.7rem;
+  border: 1px solid #90a4ae;
+  border-radius: 6px;
+  font-size: 1rem;
+  min-width: 0;
+}
+
+/* ======== ボタン列（縦並び用） ======== */
+.buttonColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1 1 100%;
+}
+
+.buttonColumn button {
+  width: 100%;
+}
+
+/* ======== 共通ボタン ======== */
+.inputGroup button,
+.buttonColumn button {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+/* 検索ボタン */
+.searchButton {
+  background: #42a5f5;
+  color: #fff;
+}
+
+.searchButton:hover {
+  background: #a3a3a3;
+}
+
+/* リセットボタン */
+.resetButton {
+  background: #f46464;
+  color: #fff;
+}
+
+.resetButton:hover {
+  background: #a3a3a3;
+}
+
+/* ======== 情報ボックス ======== */
+.info {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #ffffff;
+  border: 1px solid #b0bec5;
+  border-radius: 10px;
+}
+
+.info p {
+  margin: 0.5rem 0;
+}
+
+/* ======== セレクト行 ======== */
+.selectRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; /* 横並び固定 */
+  background: #e3f2fd;
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin: 0.75rem 0;
+}
+
+.selectRow span {
+  flex: 0 0 auto;
+  font-weight: 500;
+  color: #1565c0;
+  margin-right: 1rem; /* 番号とボックスの間隔 */
+}
+
+.selectRow select {
+  flex: 1 1 auto;
+  min-width: 140px;
+  padding: 0.6rem;
+  border: 1px solid #90a4ae;
+  border-radius: 6px;
+  background: #fff;
+}
+
+/* ======== 下部の大ボタン ======== */
+.activeButton,
+.disabledButton {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.activeButton {
+  background: #26a69a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.activeButton:hover {
+  background: #00796b;
+}
+
+.disabledButton {
+  background: #cfd8dc;
+  color: #fff;
+  border: none;
+  cursor: not-allowed;
+}
+
+/* ======== モーダル ======== */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  padding: 1rem;
+}
+
+.modalContent {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 14px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.modalContent h3 {
+  margin-top: 0;
+  color: #1565c0;
+}
+
+.modalContent p {
+  margin: 0.5rem 0;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.modalActions button {
+  flex: 1 1 auto;
+  margin: 0 0.25rem;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+}
+
+.modalActions button:first-child {
+  background: #9e9e9e;
+}
+
+.modalActions button:first-child:hover {
+  background: #757575;
+}
+
+.modalActions button:last-child {
+  background: #26a69a;
+}
+
+.modalActions button:last-child:hover {
+  background: #00796b;
+}
+
+.p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #e53935;
+}
+
+/* ======== スマホ専用微調整 ======== */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.2rem 1.5rem; /* 横の余白は十分に残す */
+    max-width: 90%;
   }
-  
-  /* ======== タイトル ======== */
-  .h1 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    color: #1565c0;
-  }
-  
-  /* ======== 入力グループ ======== */
-  .inputGroup {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-  }
-  
-  .inputGroup label {
-    flex: 1 1 100%;
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-  }
-  
-  .inputGroup input {
-    flex: 1 1 auto;
-    padding: 0.7rem;
-    border: 1px solid #90a4ae;
-    border-radius: 6px;
-    font-size: 1rem;
-    min-width: 0;
-  }
-  
-  .inputGroup button {
-    padding: 0.7rem 1.2rem;
-    background: #42a5f5;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s ease;
-  }
-  
-  .inputGroup button:hover {
-    background: #1e88e5;
-  }
-  
-  /* ======== 情報ボックス ======== */
-  .info {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #ffffff;
-    border: 1px solid #b0bec5;
-    border-radius: 10px;
-  }
-  
-  .info p {
-    margin: 0.5rem 0;
-  }
-  
-  /* ======== セレクト行 ======== */
+
   .selectRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     flex-wrap: nowrap; /* 横並び固定 */
-    background: #e3f2fd;
-    border-radius: 6px;
-    padding: 0.8rem 1rem;
-    margin: 0.75rem 0;
   }
-  
+
   .selectRow span {
-    flex: 0 0 auto;
-    font-weight: 500;
-    color: #1565c0;
-    margin-right: 1rem; /* 番号とボックスの間隔 */
+    margin-bottom: 0; /* 横並びなら不要 */
   }
-  
+
   .selectRow select {
     flex: 1 1 auto;
-    min-width: 140px;
-    padding: 0.6rem;
-    border: 1px solid #90a4ae;
-    border-radius: 6px;
-    background: #fff;
   }
-  
-  /* ======== ボタン ======== */
-  .activeButton,
-  .disabledButton {
-    margin-top: 1rem;
-    width: 100%;
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-  }
-  
-  .activeButton {
-    background: #26a69a;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .activeButton:hover {
-    background: #00796b;
-  }
-  
-  .disabledButton {
-    background: #cfd8dc;
-    color: #fff;
-    border: none;
-    cursor: not-allowed;
-  }
-  
-  /* ======== モーダル ======== */
-  .modal {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
-    padding: 1rem;
-  }
-  
-  .modalContent {
-    background: #ffffff;
-    padding: 2rem;
-    border-radius: 14px;
-    width: 100%;
-    max-width: 420px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  }
-  
-  .modalContent h3 {
-    margin-top: 0;
-    color: #1565c0;
-  }
-  
-  .modalContent p {
-    margin: 0.5rem 0;
-  }
-  
-  .modalActions {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  
-  .modalActions button {
-    flex: 1 1 auto;
-    margin: 0 0.25rem;
-    padding: 0.7rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .modalActions button:first-child {
-    background: #9e9e9e;
-  }
-  
-  .modalActions button:first-child:hover {
-    background: #757575;
-  }
-  
-  .modalActions button:last-child {
-    background: #26a69a;
-  }
-  
-  .modalActions button:last-child:hover {
-    background: #00796b;
-  }
-  
-  .p {
-    text-align: center;
-    margin-top: 1rem;
-    color: #e53935;
-  }
-  
-  /* ======== スマホ専用微調整 ======== */
-  @media (max-width: 480px) {
-    .container {
-      padding: 1.2rem 1.5rem; /* 横の余白は十分に残す */
-      max-width: 90%;
-    }
-  
-    .selectRow {
-      flex-wrap: nowrap; /* 横並び固定 */
-    }
-  
-    .selectRow span {
-      margin-bottom: 0; /* 横並びなら不要 */
-    }
-  
-    .selectRow select {
-      flex: 1 1 auto;
-    }
-  }
-  
-  
+}

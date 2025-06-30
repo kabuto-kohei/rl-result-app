@@ -115,14 +115,34 @@ export default function RecoderInputPage() {
       <h1>リザルト入力</h1>
 
       <div className={styles.inputGroup}>
-        <label>選手IDを入力</label>
-        <input
-          type="text"
-          value={playerId}
-          onChange={(e) => setPlayerId(e.target.value)}
-        />
-        <button onClick={handleSearch}>検索</button>
-      </div>
+  <label>選手IDを入力</label>
+  <input
+    type="text"
+    value={playerId}
+    onChange={(e) => setPlayerId(e.target.value)}
+  />
+
+  {/* ここを必ず1つの div に入れる */}
+  <div className={styles.buttonColumn}>
+    <button
+      onClick={() => {
+        setPlayerId('');
+        setPlayer(null);
+        setTasks([]);
+        setResults({});
+        setShowConfirm(false);
+        setStatus('');
+      }}
+      className={styles.resetButton}
+    >
+      IDリセット
+    </button>
+
+    <button onClick={handleSearch} className={styles.searchButton}>
+      検索
+    </button>
+  </div>
+</div>
 
       {player && (
         <div className={styles.info}>
