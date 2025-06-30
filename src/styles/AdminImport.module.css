@@ -1,0 +1,46 @@
+.container {
+    max-width: 600px;
+    margin: 100px auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    color: #333;
+  }
+  
+  .h1 {
+    margin-bottom: 2rem;
+  }
+  
+  .input {
+    margin-bottom: 1rem;
+  }
+  
+  .button {
+    padding: 0.75rem 1.5rem;
+    color: #fff;
+    background: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .button:disabled {
+    background: #333;
+    cursor: not-allowed;
+  }
+  
+  .status {
+    margin-top: 1rem;
+  }
+
+  .inputGroup {
+    margin-bottom: 1rem;
+  }
+  
+  .status {
+    margin-top: 1rem;
+  }
+    
+  
