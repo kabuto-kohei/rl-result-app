@@ -36,7 +36,7 @@ export default function RecoderInputPage() {
   const [status, setStatus] = useState('');
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const competitionId = '1CG6b0m0n5MOWxBPsiue';
+  const competitionId = 'rCPkv5KdwX2FSg0UtKLq'; // ← IDに置き換え
 
   const handleSearch = async () => {
     if (!playerId) return;
@@ -90,25 +90,28 @@ export default function RecoderInputPage() {
   const allSelected =
     tasks.length > 0 && tasks.every((task) => results[task.taskId]);
 
-  const handleSubmit = async () => {
-    await setDoc(
-      doc(
-        db,
-        `competitions/${competitionId}/players/${playerId.trim()}/results/final`
-      ),
-      {
-        results,
-        submittedAt: new Date(),
-      }
-    );
+    const handleSubmit = async () => {
+      // 課題ID順に results を配列に変換
+      const resultsArray = tasks.map((task) => results[task.taskId]);
 
-    setStatus(`送信が完了しました！`);
-    setPlayer(null);
-    setPlayerId('');
-    setResults({});
-    setTasks([]);
-    setShowConfirm(false);
-  };
+      await setDoc(
+        doc(
+          db,
+          `competitions/${competitionId}/players/${playerId.trim()}/results/final`
+        ),
+        {
+          results: resultsArray, 
+          submittedAt: new Date(),
+        }
+      );
+
+      setStatus(`送信が完了しました！`);
+      setPlayer(null);
+      setPlayerId('');
+      setResults({});
+      setTasks([]);
+      setShowConfirm(false);
+    };
 
   return (
     <main className={styles.container}>
