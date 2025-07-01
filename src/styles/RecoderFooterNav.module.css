@@ -1,0 +1,44 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0; /* ← 余白を増やす */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 50;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 0.7rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  flex: 1; /* 各アイコンが均等に幅を取る */
+}
+
+.link:hover {
+  color: #000;
+}
+
+.active {
+  color: #000;
+}
+
+.icon {
+  font-size: 1.6rem; /* ← アイコンを少し大きく */
+  line-height: 1;
+}
+
+.nav::before {
+  content: "";
+  display: block;
+  height: env(safe-area-inset-bottom); /* iPhoneのSafeArea対応 */
+}
