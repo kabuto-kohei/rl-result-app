@@ -112,7 +112,6 @@ export default function RecoderInputPage() {
 
   return (
     <main className={styles.container}>
-      <h1>リザルト入力</h1>
 
       {/* 🔲 入力BOX */}
       <div className={styles.box}>
