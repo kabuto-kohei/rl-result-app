@@ -114,7 +114,9 @@ export default function RecoderInputPage() {
     <main className={styles.container}>
       <h1>リザルト入力</h1>
 
-      <div className={styles.inputGroup}>
+      {/* 🔲 入力BOX */}
+      <div className={styles.box}>
+        <div className={styles.inputGroup}>
           <label>選手IDを入力</label>
           <input
             type="text"
@@ -123,6 +125,10 @@ export default function RecoderInputPage() {
           />
 
           <div className={styles.buttonColumn}>
+            <button onClick={handleSearch} className={styles.searchButton}>
+              検索
+            </button>
+            
             <button
               onClick={() => {
                 setPlayerId('');
@@ -136,17 +142,17 @@ export default function RecoderInputPage() {
             >
               IDリセット
             </button>
-
-            <button onClick={handleSearch} className={styles.searchButton}>
-              検索
-            </button>
           </div>
         </div>
+      </div>
 
+      {/* 🔲 情報＋結果入力BOX */}
       {player && (
-        <div className={styles.info}>
-          <p>名前: {player.name}</p>
-          <p>カテゴリー: {player.category}</p>
+        <div className={styles.box}>
+          <div className={styles.info}>
+            <p>名前: {player.name}</p>
+            <p>カテゴリー: {player.category}</p>
+          </div>
 
           <h2>課題リザルト</h2>
           {tasks.map((task) => (
