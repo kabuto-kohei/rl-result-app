@@ -18,27 +18,46 @@
   width: 100%;
   border-collapse: collapse;
   text-align: center;
-  table-layout: fixed; /* 必須：均等割り */
+  table-layout: fixed; /* 均等列幅 */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .resultTable th,
 .resultTable td {
   border: 1px solid #ccc;
-  padding: 0.4rem 0.3rem;
+  padding: 0.5rem 0.4rem;
   word-break: break-word;
   white-space: nowrap;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .resultTable th {
-  background: #1565c0;
+  background: #5f5f5f;
   color: #fff;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
 }
 
 .resultTable tr:nth-child(even) {
   background: #f9f9f9;
+}
+
+/* ======== 判定スタイル ======== */
+.topCell {
+  background: #e53935; /* 赤背景 */
+  color: #fff;          /* 白字 */
+  font-weight: bold;
+}
+
+.z2Cell {
+  background: #fff;
+  color: #e53935; /* 赤文字 */
+  font-weight: bold;
+}
+
+.z1Cell {
+  background: #fff;
+  color: #e53935; /* 赤文字 */
+  font-weight: bold;
 }
 
 /* ======== カテゴリー選択エリア ======== */
@@ -78,8 +97,8 @@
 @media (max-width: 768px) {
   .resultTable th,
   .resultTable td {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.2rem;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.3rem;
   }
 
   .selectArea {
@@ -96,7 +115,7 @@
 @media (max-width: 480px) {
   .resultTable th,
   .resultTable td {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.1rem;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.2rem;
   }
 }

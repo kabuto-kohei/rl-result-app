@@ -5,14 +5,12 @@ import { Result } from '@/types/Result'
 import styles from '@/styles/RecoderResults.module.css'
 
 export default function ResultTable({ results }: { results: Result[] }) {
-  // 順位付け（TOP数降順）
   const sorted = [...results].sort((a, b) => {
     const aTop = a.results.filter(r => r === 'TOP').length
     const bTop = b.results.filter(r => r === 'TOP').length
     return bTop - aTop
   })
 
-  // 課題数を決定
   const problemCount = sorted[0]?.results.length || 0
 
   return (
@@ -42,9 +40,28 @@ export default function ResultTable({ results }: { results: Result[] }) {
               <td>{topCount}</td>
               <td>{z2Count}</td>
               <td>{z1Count}</td>
-              {r.results.map((v, i) => (
-                <td key={i}>{v === 'TOP' ? 'T' : v === 'ZONE2' ? 'Z2' : v === 'ZONE1' ? 'Z1' : v}</td>
-              ))}
+              {r.results.map((v, i) => {
+                const isNone = v === 'なし' || v === '' || v === null
+
+                let cellClass = ''
+                if (v === 'TOP') cellClass = styles.topCell
+                if (v === 'ZONE2') cellClass = styles.z2Cell
+                if (v === 'ZONE1') cellClass = styles.z1Cell
+
+                return (
+                  <td key={i} className={cellClass}>
+                    {isNone
+                      ? '-' 
+                      : v === 'TOP'
+                      ? 'T'
+                      : v === 'ZONE2'
+                      ? 'Z2'
+                      : v === 'ZONE1'
+                      ? 'Z1'
+                      : v}
+                  </td>
+                )
+              })}
             </tr>
           )
         })}
