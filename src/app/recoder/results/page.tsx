@@ -6,7 +6,7 @@ import { db } from '@/firebase'
 import CategorySelect from '@/components/CategorySelect'
 import ResultTable from '@/components/ResultTable'
 import styles from '@/styles/RecoderResults.module.css'
-import { Result } from '@/types/Result' // ✅ 共通型を import
+import { Result } from '@/types/Result' 
 
 // プレイヤー型（このページ内で完結）
 type Player = {
