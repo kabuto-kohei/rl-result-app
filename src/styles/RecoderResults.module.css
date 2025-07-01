@@ -18,14 +18,14 @@
   width: 100%;
   border-collapse: collapse;
   text-align: center;
-  table-layout: auto; /* ← 幅自動調整に変更！ */
+  table-layout: auto; /* 自動調整 */
 }
 
 .resultTable th,
 .resultTable td {
   border: 1px solid #ccc;
   padding: 0.8rem 1rem;
-  white-space: nowrap; /* ← 折り返さずに横スクロール防ぐ */
+  white-space: nowrap;
 }
 
 .resultTable th {
@@ -37,22 +37,22 @@
   background: #f9f9f9;
 }
 
-/* ======== 判定スタイル ======== */
+/* ======== 判定セルスタイル ======== */
 .topCell {
-  background: #e53935; /* 赤背景 */
-  color: #fff;          /* 白字 */
+  background: #e53935;
+  color: #fff;
   font-weight: bold;
 }
 
 .z2Cell {
   background: #fff;
-  color: #e53935; /* 赤文字 */
+  color: #e53935;
   font-weight: bold;
 }
 
 .z1Cell {
   background: #fff;
-  color: #e53935; /* 赤文字 */
+  color: #e53935;
   font-weight: bold;
 }
 
@@ -91,6 +91,17 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    display: inline-block;
+    transform: scale(0.95);
+    transform-origin: top center;
+    width: fit-content;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
   .resultTable th,
   .resultTable td {
     font-size: 0.75rem;
@@ -105,13 +116,5 @@
   .selectArea select,
   .selectArea button {
     width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .resultTable th,
-  .resultTable td {
-    font-size: 0.7rem;
-    padding: 0.3rem 0.2rem;
   }
 }
