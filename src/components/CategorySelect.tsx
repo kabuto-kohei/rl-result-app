@@ -17,7 +17,7 @@ export default function CategorySelect({
   handleSearch,
 }: Props) {
   const [categories, setCategories] = useState<string[]>([])
-  const competitionId = 'rCPkv5KdwX2FSg0UtKLq' // ← ID置き換え
+  const competitionId = '68CDDTtWfnCHJ704KHM2' // ← ID置き換え
 
   useEffect(() => {
     const fetchCategories = async () => {

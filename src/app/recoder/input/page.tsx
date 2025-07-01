@@ -36,7 +36,7 @@ export default function RecoderInputPage() {
   const [status, setStatus] = useState('');
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const competitionId = 'rCPkv5KdwX2FSg0UtKLq'; // ← IDに置き換え
+  const competitionId = '68CDDTtWfnCHJ704KHM2'; // ← IDに置き換え
 
   const handleSearch = async () => {
     if (!playerId) return;

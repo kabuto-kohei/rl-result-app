@@ -19,7 +19,7 @@ export default function ResultPage() {
   const [category, setCategory] = useState<string | null>(null)
   const [results, setResults] = useState<Result[]>([])
 
-  const competitionId = 'rCPkv5KdwX2FSg0UtKLq' // ← Firestore の大会IDに置き換え
+  const competitionId = '68CDDTtWfnCHJ704KHM2' // ← Firestore の大会IDに置き換え
 
   const handleSearch = async () => {
     if (!category) return
