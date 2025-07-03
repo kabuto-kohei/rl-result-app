@@ -1,0 +1,72 @@
+/* ======== ベース ======== */
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 1.5rem 2rem;
+  color: #333;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* ======== タイトル ======== */
+.h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1565c0;
+}
+
+/* ======== 入力ブロック ======== */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 0.7rem;
+  border: 2px solid #000;
+  border-radius: 12px; /* 丸角 */
+  font-size: 1rem;
+}
+
+/* ======== 登録ボタン ======== */
+.button {
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  background: #42a5f5;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px; /* 丸角 */
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: #0070f3;
+}
+
+/* ======== ステータス表示 ======== */
+.status {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  color: #e53935;
+}
+
+/* ======== スマホ対応 ======== */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.2rem 1.5rem;
+    max-width: 95%;
+  }
+}

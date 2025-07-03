@@ -14,13 +14,6 @@ type CompetitionCSVRow = {
   problem: string;
 };
 
-type PlayerCSVRow = {
-  playerId: string;
-  name: string;
-  kana: string;
-  category: string;
-};
-
 type TaskCSVRow = {
   taskId: string;
   taskName: string;
@@ -33,19 +26,12 @@ type TaskCSVRow = {
 
 export default function AdminImportPage() {
   const [competitionFile, setCompetitionFile] = useState<File | null>(null);
-  const [playersFile, setPlayersFile] = useState<File | null>(null);
   const [tasksFile, setTasksFile] = useState<File | null>(null);
   const [status, setStatus] = useState('');
 
   const handleCompetitionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       setCompetitionFile(e.target.files[0]);
-    }
-  };
-
-  const handlePlayersChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files?.length) {
-      setPlayersFile(e.target.files[0]);
     }
   };
 
@@ -56,7 +42,7 @@ export default function AdminImportPage() {
   };
 
   const handleImport = async () => {
-    if (!competitionFile || !playersFile || !tasksFile) return;
+    if (!competitionFile || !tasksFile) return;
 
     setStatus('インポート中...');
 
@@ -75,48 +61,28 @@ export default function AdminImportPage() {
 
           const competitionId = competitionRef.id;
 
-          // 選手情報の保存
-          Papa.parse<PlayerCSVRow>(playersFile, {
+          // 課題情報の保存
+          Papa.parse<TaskCSVRow>(tasksFile, {
             header: true,
-            complete: async (playerResults) => {
-              const playersData = playerResults.data;
+            complete: async (taskResults) => {
+              const tasksData = taskResults.data;
 
-              for (const player of playersData) {
+              for (const task of tasksData) {
                 await setDoc(
-                  doc(db, `competitions/${competitionId}/players/${player.playerId}`),
+                  doc(db, `competitions/${competitionId}/tasks/${task.taskId}`),
                   {
-                    name: player.name || '',
-                    kana: player.kana || '',
-                    category: player.category || '',
+                    taskName: task.taskName || '',
+                    round: task.round || '',
+                    category: task.category || '',
+                    pointTop: Number(task.pointTop) || 0,
+                    pointZone1: Number(task.pointZone1) || 0,
+                    pointZone2: Number(task.pointZone2) || 0,
                     createdAt: new Date(),
                   }
                 );
               }
 
-              // 課題情報の保存
-              Papa.parse<TaskCSVRow>(tasksFile, {
-                header: true,
-                complete: async (taskResults) => {
-                  const tasksData = taskResults.data;
-
-                  for (const task of tasksData) {
-                    await setDoc(
-                      doc(db, `competitions/${competitionId}/tasks/${task.taskId}`),
-                      {
-                        taskName: task.taskName || '',
-                        round: task.round || '',
-                        category: task.category || '',
-                        pointTop: Number(task.pointTop) || 0,
-                        pointZone1: Number(task.pointZone1) || 0,
-                        pointZone2: Number(task.pointZone2) || 0,
-                        createdAt: new Date(),
-                      }
-                    );
-                  }
-
-                  setStatus('すべてのインポートが完了しました！');
-                },
-              });
+              setStatus('すべてのインポートが完了しました！');
             },
           });
         } catch (err) {
@@ -129,16 +95,11 @@ export default function AdminImportPage() {
 
   return (
     <main className={styles.container}>
-      <h1>大会・選手・課題 インポート</h1>
+      <h1>大会・課題 インポート</h1>
 
       <div className={styles.inputGroup}>
         <label>大会情報 CSV</label>
         <input type="file" accept=".csv" onChange={handleCompetitionChange} />
-      </div>
-
-      <div className={styles.inputGroup}>
-        <label>選手情報 CSV</label>
-        <input type="file" accept=".csv" onChange={handlePlayersChange} />
       </div>
 
       <div className={styles.inputGroup}>
@@ -149,7 +110,7 @@ export default function AdminImportPage() {
       <button
         onClick={handleImport}
         className={styles.button}
-        disabled={!competitionFile || !playersFile || !tasksFile}
+        disabled={!competitionFile || !tasksFile}
       >
         インポート実行
       </button>

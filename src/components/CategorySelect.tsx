@@ -1,38 +1,43 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
-import { collection, getDocs } from 'firebase/firestore'
-import { db } from '@/firebase'
-import styles from '@/styles/RecoderResults.module.css'
+import React, { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '@/firebase';
+import styles from '@/styles/RecoderResults.module.css';
 
 type Props = {
-  category: string | null
-  setCategory: (val: string) => void
-  handleSearch: () => void
-}
+  category: string | null;
+  setCategory: (val: string) => void;
+  handleSearch: () => void;
+};
+
+type Player = {
+  competitionId: string;
+  category: string;
+};
 
 export default function CategorySelect({
   category,
   setCategory,
   handleSearch,
 }: Props) {
-  const [categories, setCategories] = useState<string[]>([])
-  const competitionId = '68CDDTtWfnCHJ704KHM2' // ← ID置き換え
+  const [categories, setCategories] = useState<string[]>([]);
+  const competitionId = 'rYryS6KqHF8BjoY6BDsy'; // ← 適宜置換
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const snapshot = await getDocs(
-        collection(db, `competitions/${competitionId}/players`)
-      )
+      const snapshot = await getDocs(collection(db, 'players'));
       const all = snapshot.docs
-        .map(doc => doc.data().category as string)
-        .filter((c) => !!c)
-      const unique = Array.from(new Set(all))
-      setCategories(unique)
-    }
+        .map((doc) => doc.data() as Player)
+        .filter((p) => p.competitionId === competitionId && !!p.category)
+        .map((p) => p.category);
 
-    fetchCategories()
-  }, [])
+      const unique = Array.from(new Set(all));
+      setCategories(unique);
+    };
+
+    fetchCategories();
+  }, []);
 
   return (
     <div className={styles.selectArea}>
@@ -52,5 +57,5 @@ export default function CategorySelect({
       </label>
       <button onClick={handleSearch}>検索</button>
     </div>
-  )
+  );
 }

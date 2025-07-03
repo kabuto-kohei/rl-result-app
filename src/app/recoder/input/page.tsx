@@ -15,8 +15,8 @@ import styles from '@/styles/RecoderInput.module.css';
 
 type Player = {
   name: string;
-  kana: string;
   category: string;
+  competitionId: string;
 };
 
 type Task = {
@@ -36,15 +36,11 @@ export default function RecoderInputPage() {
   const [status, setStatus] = useState('');
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const competitionId = '68CDDTtWfnCHJ704KHM2'; // ← IDに置き換え
-
   const handleSearch = async () => {
     if (!playerId) return;
 
-    const docRef = doc(
-      db,
-      `competitions/${competitionId}/players/${playerId.trim()}`
-    );
+    const trimmedId = playerId.trim();
+    const docRef = doc(db, `players/${trimmedId}`);
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
@@ -52,9 +48,11 @@ export default function RecoderInputPage() {
       setPlayer(playerData);
       setStatus('');
 
+      const { competitionId, category } = playerData;
+
       const tasksQuery = query(
         collection(db, `competitions/${competitionId}/tasks`),
-        where('category', '==', playerData.category)
+        where('category', '==', category)
       );
       const tasksSnap = await getDocs(tasksQuery);
 
@@ -90,33 +88,39 @@ export default function RecoderInputPage() {
   const allSelected =
     tasks.length > 0 && tasks.every((task) => results[task.taskId]);
 
-    const handleSubmit = async () => {
-      // 課題ID順に results を配列に変換
-      const resultsArray = tasks.map((task) => results[task.taskId]);
+  const handleSubmit = async () => {
+    if (!player || !player.competitionId) {
+      setStatus('エラー: 選手情報が不完全です。');
+      return;
+    }
 
-      await setDoc(
-        doc(
-          db,
-          `competitions/${competitionId}/players/${playerId.trim()}/results/final`
-        ),
-        {
-          results: resultsArray, 
-          submittedAt: new Date(),
-        }
-      );
+    const trimmedId = playerId.trim();
 
-      setStatus(`送信が完了しました！`);
-      setPlayer(null);
-      setPlayerId('');
-      setResults({});
-      setTasks([]);
-      setShowConfirm(false);
-    };
+    // 🔒 書き込みパスを必ず同じに固定
+    const docPath = `results/${player.competitionId}_${trimmedId}`;
+
+    const resultsArray = tasks.map((task) => results[task.taskId]);
+
+    await setDoc(
+      doc(db, docPath),
+      {
+        playerId: trimmedId,
+        competitionId: player.competitionId,
+        results: resultsArray,
+        submittedAt: new Date(),
+      }
+    );
+
+    setStatus(`送信が完了しました！`);
+    setPlayer(null);
+    setPlayerId('');
+    setResults({});
+    setTasks([]);
+    setShowConfirm(false);
+  };
 
   return (
     <main className={styles.container}>
-
-      {/* 🔲 入力BOX */}
       <div className={styles.box}>
         <div className={styles.inputGroup}>
           <label>選手IDを入力</label>
@@ -130,7 +134,7 @@ export default function RecoderInputPage() {
             <button onClick={handleSearch} className={styles.searchButton}>
               検索
             </button>
-            
+
             <button
               onClick={() => {
                 setPlayerId('');
@@ -148,7 +152,6 @@ export default function RecoderInputPage() {
         </div>
       </div>
 
-      {/* 🔲 情報＋結果入力BOX */}
       {player && (
         <div className={styles.box}>
           <div className={styles.info}>

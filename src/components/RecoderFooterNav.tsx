@@ -15,17 +15,26 @@ export default function RecoderFooterNav() {
       >
         <span className={styles.icon}>🏠</span>
       </Link>
+
       <Link
         href="/recoder/input"
         className={`${styles.link} ${pathname === '/recoder/input' ? styles.active : ''}`}
       >
         <span className={styles.icon}>✏️</span>
       </Link>
+
       <Link
         href="/recoder/results"
         className={`${styles.link} ${pathname === '/recoder/results' ? styles.active : ''}`}
       >
         <span className={styles.icon}>❤️‍🔥</span>
+      </Link>
+
+      <Link
+        href="/recoder/register"
+        className={`${styles.link} ${pathname === '/recoder/register' ? styles.active : ''}`}
+      >
+        <span className={styles.icon}>📝</span>
       </Link>
     </nav>
   );
