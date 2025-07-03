@@ -42,3 +42,9 @@
   display: block;
   height: env(safe-area-inset-bottom); /* iPhoneのSafeArea対応 */
 }
+
+.label {
+  margin-top: 0.25rem;
+  font-size: 0.7rem;
+  line-height: 1;
+}

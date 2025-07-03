@@ -14,6 +14,7 @@ export default function RecoderFooterNav() {
         className={`${styles.link} ${pathname === '/recoder' ? styles.active : ''}`}
       >
         <span className={styles.icon}>🏠</span>
+        <span className={styles.label}>ホーム</span>
       </Link>
 
       <Link
@@ -21,6 +22,7 @@ export default function RecoderFooterNav() {
         className={`${styles.link} ${pathname === '/recoder/input' ? styles.active : ''}`}
       >
         <span className={styles.icon}>✏️</span>
+        <span className={styles.label}>入力</span>
       </Link>
 
       <Link
@@ -28,6 +30,7 @@ export default function RecoderFooterNav() {
         className={`${styles.link} ${pathname === '/recoder/results' ? styles.active : ''}`}
       >
         <span className={styles.icon}>❤️‍🔥</span>
+        <span className={styles.label}>リザルト</span>
       </Link>
 
       <Link
@@ -35,6 +38,7 @@ export default function RecoderFooterNav() {
         className={`${styles.link} ${pathname === '/recoder/register' ? styles.active : ''}`}
       >
         <span className={styles.icon}>📝</span>
+        <span className={styles.label}>登録</span>
       </Link>
     </nav>
   );
