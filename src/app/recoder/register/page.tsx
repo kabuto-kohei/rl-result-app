@@ -67,7 +67,7 @@ export default function RecoderRegisterPage() {
     }
 
     try {
-      // ✅ 二重登録防止
+      // 二重登録防止
       const playerRef = doc(db, `players/${trimmedId}`);
       const playerSnap = await getDoc(playerRef);
 

@@ -22,7 +22,7 @@ export default function CategorySelect({
   handleSearch,
 }: Props) {
   const [categories, setCategories] = useState<string[]>([]);
-  const competitionId = 'rYryS6KqHF8BjoY6BDsy'; // ← 適宜置換
+  const competitionId = 'eCM9u6ex6q6Jq0SxjSBf'; // ← 適宜置換
 
   useEffect(() => {
     const fetchCategories = async () => {

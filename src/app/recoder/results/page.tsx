@@ -20,7 +20,7 @@ export default function ResultPage() {
   const [category, setCategory] = useState<string | null>(null);
   const [results, setResults] = useState<Result[]>([]);
 
-  const competitionId = 'rYryS6KqHF8BjoY6BDsy'; // ← 適宜置換
+  const competitionId = 'eCM9u6ex6q6Jq0SxjSBf'; // ← 適宜置換
 
   const handleSearch = async () => {
     if (!category) return;
