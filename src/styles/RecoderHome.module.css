@@ -1,0 +1,81 @@
+/* ======== 全体ラッパー ======== */
+.wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #fff;
+  box-sizing: border-box;
+  /* 余白は付けない、子要素で制御する */
+}
+
+/* ======== HERO 部分 ======== */
+.hero {
+  width: 100%; /* 横幅ピッタリ */
+  margin: 0 auto; /* 予防で中央揃え */
+  background: url('https://firebasestorage.googleapis.com/v0/b/rl-result-app.firebasestorage.app/o/SUMMER_JAM_25.jpg?alt=media&token=493dee1c-d4da-4b5e-b334-4ab25a69fde2')
+    center center / contain no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4rem 1rem 2rem;
+  aspect-ratio: 3 / 4;
+  text-align: center;
+  box-sizing: border-box; /* 安定化 */
+}
+
+/* ======== 共通コンテンツ幅（guide・actions） ======== */
+.guide,
+.actions {
+  width: 90%; /* ← 画面幅の90% */
+  max-width: 500px;
+  margin: 2rem auto;
+  box-sizing: border-box;
+}
+
+/* ======== 使い方ガイド ======== */
+.guide {
+  background: #42a5f5;
+  color: #fff;
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-top: 0; /* ← top だけ 0 に */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ======== アクションエリア ======== */
+.actions {
+  margin-bottom: 40px;
+}
+
+/* ======== 2列の行 ======== */
+.actionsRow {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  margin-bottom: 1rem;
+}
+
+/* ======== ボタン共通 ======== */
+.btn,
+.btnWide {
+  flex: 1 1 0;
+  min-width: 0;
+  background: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  cursor: pointer;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.btnWide {
+  display: block;
+  width: 100%;
+}

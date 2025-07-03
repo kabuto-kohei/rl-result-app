@@ -14,13 +14,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0a0a0a; /* ← ダーク設定は残してOK */
     --foreground: #ededed;
   }
 }
 
 body {
-  background: var(--background);
+  background: #ffffff !important; /* ← ここで常に白を固定！ */
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+  background: #ffffff; /* ← もしスクロールで下地が透けるとき用 */
 }
