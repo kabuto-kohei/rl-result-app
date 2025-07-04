@@ -139,7 +139,7 @@ export default function RecoderRegisterPage() {
           type="text"
           value={playerId}
           onChange={(e) => setPlayerId(e.target.value)}
-          placeholder="例: 001"
+          placeholder="例: 好きな番号でいいよん（忘れないでね）"
         />
       </div>
 
@@ -150,7 +150,7 @@ export default function RecoderRegisterPage() {
           type="text"
           value={playerName}
           onChange={(e) => setPlayerName(e.target.value)}
-          placeholder="例: 山田 太郎"
+          placeholder="例: 好きに設定していいよん（みんな見るからね）"
         />
       </div>
 
