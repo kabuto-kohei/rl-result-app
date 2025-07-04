@@ -1,0 +1,59 @@
+/* ======== コンテナ ======== */
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  color: #333;
+}
+
+/* ======== ボタンエリア ======== */
+.buttonArea {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* ======== エクスポートボタン ======== */
+.exportButton {
+  flex: 1 1 auto;
+  padding: 0.8rem 1.5rem;
+  background: #42a5f5;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.exportButton:hover {
+  background: #64b5f6;
+}
+
+/* ======== テーブルラッパー ======== */
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  background: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ======== レスポンシブ ======== */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+
+  .exportButton {
+    width: 100%;
+  }
+}
+

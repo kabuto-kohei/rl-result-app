@@ -13,8 +13,8 @@ export default function AdminHomePage() {
           📄 データインポート
         </Link>
 
-        <Link href="/admin/other" className={styles.link}>
-          📊 その他ページ（例）
+        <Link href="/admin/result" className={styles.link}>
+          📊 リザルトページ
         </Link>
       </nav>
     </main>
