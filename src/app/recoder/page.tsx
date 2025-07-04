@@ -20,7 +20,7 @@ export default function RecoderHomePage() {
           </Link>
         </div>
         <Link href="/recoder/results" className={styles.btnWide}>
-          ② リザルト表示
+          ③ リザルト表示
         </Link>
       </div>
     </div>
