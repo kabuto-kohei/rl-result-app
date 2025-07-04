@@ -52,7 +52,6 @@ export default function AdminImportPage() {
         const competitionData = competitionResults.data[0]; // 1大会想定
 
         try {
-          // 大会情報を保存 → 大会IDを取得
           const competitionRef = await addDoc(collection(db, 'competitions'), {
             location: competitionData.location || '',
             name: competitionData.name || '',
@@ -61,7 +60,6 @@ export default function AdminImportPage() {
 
           const competitionId = competitionRef.id;
 
-          // 課題情報の保存
           Papa.parse<TaskCSVRow>(tasksFile, {
             header: true,
             complete: async (taskResults) => {
@@ -95,16 +93,26 @@ export default function AdminImportPage() {
 
   return (
     <main className={styles.container}>
-      <h1>大会・課題 インポート</h1>
+      <h1 className={styles.h1}>大会・課題データインポート</h1>
 
       <div className={styles.inputGroup}>
         <label>大会情報 CSV</label>
-        <input type="file" accept=".csv" onChange={handleCompetitionChange} />
+        <input
+          type="file"
+          accept=".csv"
+          onChange={handleCompetitionChange}
+          className={styles.fileInput}
+        />
       </div>
 
       <div className={styles.inputGroup}>
         <label>課題情報 CSV</label>
-        <input type="file" accept=".csv" onChange={handleTasksChange} />
+        <input
+          type="file"
+          accept=".csv"
+          onChange={handleTasksChange}
+          className={styles.fileInput}
+        />
       </div>
 
       <button
