@@ -1,8 +1,7 @@
-/* ======== ベース ======== */
+/* ======== ベース（main領域 + 表） ======== */
 .container {
-  flex: 1; /* ← フッター固定のために main を伸ばす */
+  flex: 1; /* ← フッター固定のために main を縦に広げる */
   width: 100%;
-  max-width: 100%;
   margin: 40px auto;
   padding: 1.5rem 2rem;
   color: #333;
@@ -12,15 +11,16 @@
 
 .tableWrapper {
   margin-top: 2rem;
-  overflow-x: auto; /* ← テーブルだけ横スクロール */
+  overflow-x: auto; /* テーブルだけ横スクロール */
 }
 
 .resultTable {
   border-collapse: collapse;
   text-align: center;
-  min-width: 600px; /* カラム数多いときに折り返さない */
+  min-width: 600px;
   width: 100%;
   table-layout: auto;
+  font-size: 1rem;
 }
 
 .resultTable th,
@@ -39,19 +39,14 @@
   background: #f9f9f9;
 }
 
-/* ======== 判定セルスタイル ======== */
+/* ======== 判定セルスタイル（色付き） ======== */
 .topCell {
   background: #e53935;
   color: #fff;
   font-weight: bold;
 }
 
-.z2Cell {
-  background: #fff;
-  color: #e53935;
-  font-weight: bold;
-}
-
+.z2Cell,
 .z1Cell {
   background: #fff;
   color: #e53935;
@@ -62,6 +57,7 @@
   background: #fff;
   color: #333;
 }
+
 /* ======== カテゴリー選択エリア ======== */
 .selectArea {
   display: flex;
@@ -74,20 +70,21 @@
   font-weight: bold;
 }
 
-.selectArea select {
-  flex: 0 0 auto;  /* ✅ 横伸び防止 */
-  width: auto;     /* ✅ 必要幅だけ */
+.selectArea select,
+.selectArea button {
+  flex: 0 0 auto;
   padding: 0.6rem 1rem;
-  border: 2px solid #000;
   border-radius: 12px;
   font-size: 1rem;
 }
 
+.selectArea select {
+  border: 2px solid #000;
+  width: auto;
+}
+
 .selectArea button {
-  flex: 0 0 auto;  /* ✅ 横伸び防止 */
-  padding: 0.7rem 1.5rem;
   border: none;
-  border-radius: 12px;
   background: #42a5f5;
   color: #fff;
   font-weight: bold;
@@ -97,19 +94,6 @@
 
 .selectArea button:hover {
   background: #1e88e5;
-}
-
-/* スマホは縦並びでフル幅 */
-@media (max-width: 768px) {
-  .selectArea {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .selectArea select,
-  .selectArea button {
-    width: 100%;
-  }
 }
 
 /* ======== フッター固定 ======== */
@@ -122,6 +106,7 @@
   flex-shrink: 0;
 }
 
+/* ======== スマホ対応（768px以下） ======== */
 @media (max-width: 768px) {
   .resultTable {
     font-size: 0.85rem;
@@ -143,6 +128,7 @@
   }
 }
 
+/* ======== スマホ最小表示（480px以下） ======== */
 @media (max-width: 480px) {
   .resultTable {
     font-size: 0.75rem;
